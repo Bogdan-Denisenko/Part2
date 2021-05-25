@@ -36,7 +36,6 @@ public class Writer
         RestTemplateBuilder builder = new RestTemplateBuilder();
         RestTemplate restTemplate = builder.build();
         String schedule = restTemplate.getForObject("http://localhost:8001/generate/table", String.class);
-        assert schedule != null;
         JsonArray object = JsonParser.parseString(schedule).getAsJsonArray();
         Type SHIP_TYPE = new TypeToken<ArrayList<Ship>>() {}.getType();
         ArrayList<Ship> parsedJson = gsonOne.fromJson(object, SHIP_TYPE);
